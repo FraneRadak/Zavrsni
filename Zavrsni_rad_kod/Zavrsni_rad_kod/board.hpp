@@ -4,12 +4,22 @@
 using namespace std;
 enum{es,wP,bP,wR,bR,wN,bN,wB,bB,wQ,bQ,wK,bK};
 
+class Move {
+public:
+	int piece;
+	int position;
+	int eaten_piece=0;
+	int current_position;
+
+};
 class Position {
 private:
+	bool check = false;
+	bool check_mate = false;
 	int nn = -1000;
 	int** Board_index;
 	int piece_counter=32;
-	int board[12][12] = {
+	int board[144] = {
 	nn,nn,nn,nn,nn,nn,nn,nn,nn,nn,nn,nn,
 	nn,nn,nn,nn,nn,nn,nn,nn,nn,nn,nn,nn,
 	nn,nn,bR,bN,bB,bQ,bK,bB,bN,bR,nn,nn,
@@ -23,10 +33,14 @@ private:
 	nn,nn,nn,nn,nn,nn,nn,nn,nn,nn,nn,nn,
 	nn,nn,nn,nn,nn,nn,nn,nn,nn,nn,nn,nn
 	};
+
+
+	//aktivna polja su od 26 do 117
 	string piecelist[13] = { "es","wP","bP","wR","bR","wN",
 	"bN","wB","bB","wQ","bQ","wK","bK"};
 public:
 	Position();
 	void printPosition();
-	void move(int piece,int square);
+	void move(Move&m);
 };
+
