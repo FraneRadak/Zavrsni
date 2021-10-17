@@ -1,2 +1,3 @@
-﻿  board.cpp
+﻿  main.cpp
+C:\Users\840 g3\Desktop\FAKS\3.GODINA\Zavrsni\Zavrsni_rad_kod\Zavrsni_rad_kod\main.cpp(5,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
   Zavrsni_rad_kod.vcxproj -> C:\Users\840 g3\Desktop\FAKS\3.GODINA\Zavrsni\Zavrsni_rad_kod\Debug\Zavrsni_rad_kod.exe

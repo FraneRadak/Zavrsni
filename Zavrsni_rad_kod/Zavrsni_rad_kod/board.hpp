@@ -8,8 +8,10 @@ class Move {
 public:
 	int piece;
 	int position;
-	int eaten_piece=0;
+	int eaten_piece = 0;
 	int current_position;
+	Move(int piece, int current_position, int position);
+
 
 };
 class Position {
@@ -35,12 +37,20 @@ private:
 	};
 
 
+
 	//aktivna polja su od 26 do 117
 	string piecelist[13] = { "es","wP","bP","wR","bR","wN",
 	"bN","wB","bB","wQ","bQ","wK","bK"};
+	void transform(int pos, int& br_red, int& br_st) {
+		br_red = (int)pos / 100;
+		br_st = pos - br_red * 12;
+	}
+	int pawn_move_check(Move& m);
+	
 public:
 	Position();
 	void printPosition();
 	void move(Move&m);
+	
 };
 
