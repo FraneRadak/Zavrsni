@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <vector>
 using namespace std;
-enum{es,wP,bP,wR,bR,wN,bN,wB,bB,wQ,bQ,wK,bK};
+enum{es,wP,wR,wB,wN,wQ,wK,bP,bR,bB,bN,bQ,bK};
 
 class Move {
 public:
@@ -36,21 +36,28 @@ private:
 	nn,nn,nn,nn,nn,nn,nn,nn,nn,nn,nn,nn
 	};
 
-
-
 	//aktivna polja su od 26 do 117
-	string piecelist[13] = { "es","wP","bP","wR","bR","wN",
-	"bN","wB","bB","wQ","bQ","wK","bK"};
+	//enum { es, wP, wR, wB, wN, wQ, wK, bP, bR, bB, bN, bQ, bK };
+	string piecelist[13] = { "es","wP","wR","wB","wN","wQ",
+	"wK","bP","bR","bB","bN","bQ","bK"};
 	void transform(int pos, int& br_red, int& br_st) {
 		br_red = (int)pos / 100;
 		br_st = pos - br_red * 12;
 	}
-	int pawn_move_check(Move& m);
-	
+	int anti_transform(int row, int col) {
+		return row * 12 + col;
+	}
+	bool pawn_move_check(Move& m);
+	bool legality_check(Move& m);
+	bool path_checker(Move& m);
+	int search_for_king(Move& m);
+	bool castle_check(Move& m);
 public:
 	Position();
 	void printPosition();
-	void move(Move&m);
+	void move(Move& m);
+	void is_check(Move& m);
 	
 };
+
 

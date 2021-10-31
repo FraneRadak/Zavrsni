@@ -1,3 +1,4 @@
-﻿  main.cpp
-C:\Users\840 g3\Desktop\FAKS\3.GODINA\Zavrsni\Zavrsni_rad_kod\Zavrsni_rad_kod\main.cpp(5,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
+﻿  board.cpp
+C:\Users\840 g3\Desktop\FAKS\3.GODINA\Zavrsni\Zavrsni_rad_kod\Zavrsni_rad_kod\board.cpp(86,11): warning C4353: nonstandard extension used: constant 0 as function expression.  Use '__noop' function intrinsic instead
+C:\Users\840 g3\Desktop\FAKS\3.GODINA\Zavrsni\Zavrsni_rad_kod\Zavrsni_rad_kod\board.cpp(118): warning C4715: 'Position::legality_check': not all control paths return a value
   Zavrsni_rad_kod.vcxproj -> C:\Users\840 g3\Desktop\FAKS\3.GODINA\Zavrsni\Zavrsni_rad_kod\Debug\Zavrsni_rad_kod.exe
