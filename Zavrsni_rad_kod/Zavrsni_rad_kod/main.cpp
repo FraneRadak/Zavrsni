@@ -3,6 +3,7 @@
 
 
 void main() {
+	/*
 	Position p;
 	p.printPosition();
 	cout << "----------------------------------------" << endl;
@@ -42,4 +43,5 @@ void main() {
 	catch (Exception& e) {
 		e.ThrowException();
 	}
+	*/
 }

@@ -11,8 +11,7 @@ public:
 	int eaten_piece = 0;
 	int current_position;
 	Move(int piece, int current_position, int position);
-
-
+	Move(){}
 };
 class Position {
 private:
@@ -36,6 +35,8 @@ private:
 	nn,nn,nn,nn,nn,nn,nn,nn,nn,nn,nn,nn
 	};
 
+	//postavit flagove za rohade
+
 	//aktivna polja su od 26 do 117
 	//enum { es, wP, wR, wB, wN, wQ, wK, bP, bR, bB, bN, bQ, bK };
 	string piecelist[13] = { "es","wP","wR","wB","wN","wQ",
@@ -48,15 +49,17 @@ private:
 		return row * 12 + col;
 	}
 	bool pawn_move_check(Move& m);
-	bool legality_check(Move& m);
-	bool path_checker(Move& m);
-	int search_for_king(Move& m);
 	bool castle_check(Move& m);
+	void diagonal_movement(Move* possible_moves, int& move_counter, int i);
+	void forward_backward_movement(Move* possible_moves, int& move_counter, int i);
+	void horizontal_movement(Move* possible_moves, int& move_counter, int i);
+	void nurse_movement(Move* possible_moves, int& move_counter, int i);
 public:
 	Position();
 	void printPosition();
 	void move(Move& m);
-	void is_check(Move& m);
+	Move* move_generator();
+	
 	
 };
 
