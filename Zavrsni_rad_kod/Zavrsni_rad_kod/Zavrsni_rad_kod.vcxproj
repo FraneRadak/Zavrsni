@@ -19,13 +19,20 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="board.cpp" />
-    <ClCompile Include="Exception.cpp" />
+    <ClCompile Include="checkers.cpp" />
+    <ClCompile Include="chess_check.cpp" />
+    <ClCompile Include="constructors.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="move.cpp" />
+    <ClCompile Include="movements.cpp" />
+    <ClCompile Include="move_generator.cpp" />
+    <ClCompile Include="other.cpp" />
+    <ClCompile Include="PositionStack.cpp" />
+    <ClCompile Include="print.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="board.hpp" />
-    <ClInclude Include="exceptions.hpp" />
+    <ClInclude Include="PositionStack.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -97,6 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

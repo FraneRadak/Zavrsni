@@ -1,0 +1,5 @@
+STOG
+Unutar klase
+1000 velicina
+
+zorbist keys
