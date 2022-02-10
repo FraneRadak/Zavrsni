@@ -58,29 +58,37 @@ void Position::pawn_movement(Move* possible_moves, int& move_counter, int i) {
 		//kretanje jedno polje naprijed
 		if (board[i - 12] == es) {
 			Move m(board[i], i, i - 12);
-			possible_moves[move_counter] = m;
-			move_counter++;
+			if (is_legal(m)) {
+				possible_moves[move_counter] = m;
+				move_counter++;
+			}
 		}
 		//pjesak s pocetnog polja moze ici 2 polja naprijed
 		if (i >= 98 && i <= 105) {
 			if (board[i - 24] == es) {
 				Move m(board[i], i, i - 24);
-				possible_moves[move_counter] = m;
-				move_counter++;
+				if (is_legal(m)) {
+					possible_moves[move_counter] = m;
+					move_counter++;
+				}
 			}
 		}
 		// u slucaju da jedemo figuru
 		if (board[i - 13] > 6) {
 			Move m(board[i], i, i - 13);
-			m.eaten_piece = board[i - 13];
-			possible_moves[move_counter] = m;
-			move_counter++;
+			if (is_legal(m)) {
+				m.eaten_piece = board[i - 13];
+				possible_moves[move_counter] = m;
+				move_counter++;
+			}
 		}
 		if (board[i - 11] > 6) {
 			Move m(board[i], i, i - 11);
-			m.eaten_piece = board[i - 11];
-			possible_moves[move_counter] = m;
-			move_counter++;
+			if (is_legal(m)) {
+				m.eaten_piece = board[i - 11];
+				possible_moves[move_counter] = m;
+				move_counter++;
+			}
 		}
 		//treba dodati opciju za en-passant uzimanje
 	}
@@ -88,29 +96,37 @@ void Position::pawn_movement(Move* possible_moves, int& move_counter, int i) {
 		//kretanje jedno polje naprijed
 		if (board[i + 12] == es) {
 			Move m(board[i], i, i + 12);
-			possible_moves[move_counter] = m;
-			move_counter++;
+			if (is_legal(m)) {
+				possible_moves[move_counter] = m;
+				move_counter++;
+			}
 		}
 		//pjesak s pocetnog polja moze ici 2 polja naprijed
 		if (i >= 38 && i <= 45) {
 			if (board[i + 24] == es) {
 				Move m(board[i], i, i + 24);
-				possible_moves[move_counter] = m;
-				move_counter++;
+				if (is_legal(m)) {
+					possible_moves[move_counter] = m;
+					move_counter++;
+				}
 			}
 		}
 		// u slucaju da jedemo figuru
 		if (board[i + 13] < 6 && board[i + 11] >0) {
 			Move m(board[i], i, i + 13);
-			m.eaten_piece = board[i + 13];
-			possible_moves[move_counter] = m;
-			move_counter++;
+			if (is_legal(m)) {
+				m.eaten_piece = board[i + 13];
+				possible_moves[move_counter] = m;
+				move_counter++;
+			}
 		}
 		if (board[i + 11] < 6 && board[i + 11] >0) {
 			Move m(board[i], i, i + 11);
-			m.eaten_piece = board[i + 11];
-			possible_moves[move_counter] = m;
-			move_counter++;
+			if (is_legal(m)) {
+				m.eaten_piece = board[i + 11];
+				possible_moves[move_counter] = m;
+				move_counter++;
+			}
 		}
 		//treba dodati opciju za en-passant uzimanje
 	}
@@ -129,11 +145,13 @@ void Position::forward_backward_movement(Move* possible_moves, int& move_counter
 				break;
 			}
 			Move m(board[i], i, temp);
-			possible_moves[move_counter] = m;
-			move_counter++;
-			if (board[temp] != es) {
-				possible_moves[move_counter - 1].eaten_piece = board[temp];
-				break;
+			if (is_legal(m)) {
+				possible_moves[move_counter] = m;
+				move_counter++;
+				if (board[temp] != es) {
+					possible_moves[move_counter - 1].eaten_piece = board[temp];
+					break;
+				}
 			}
 		}
 	}
@@ -144,10 +162,12 @@ void Position::knight_movement(Move* possible_moves, int& move_counter, int i) {
 	for (int j = 0; j < 8; j++) {
 		if ((!(eat_own_piece(i, i + delta[j]))) && board[i + delta[j]] >= 0) {
 			Move m(board[i], i, i + delta[j]);
-			if (board[i + delta[j]] != es)
-				m.eaten_piece = board[i + 23];
-			possible_moves[move_counter] = m;
-			move_counter++;
+			if (is_legal(m)) {
+				if (board[i + delta[j]] != es)
+					m.eaten_piece = board[i + 23];
+				possible_moves[move_counter] = m;
+				move_counter++;
+			}
 		}
 	}
 }
@@ -164,10 +184,13 @@ void Position::horizontal_movement(Move* possible_moves, int& move_counter, int 
 				break;
 			}
 			Move m(board[i], i, temp);
-			possible_moves[move_counter] = m;
-			move_counter++;
-			if (board[temp] != es) {
-				possible_moves[move_counter - 1].eaten_piece = board[temp];
+			if (is_legal(m)) {
+				possible_moves[move_counter] = m;
+				move_counter++;
+				if (board[temp] != es) {
+					possible_moves[move_counter - 1].eaten_piece = board[temp];
+					break;
+				}
 			}
 		}
 	}
@@ -185,11 +208,13 @@ void Position::diagonal_movement(Move* possible_moves, int& move_counter, int i)
 				break;
 			}
 			Move m(board[i], i, temp);
-			possible_moves[move_counter] = m;
-			move_counter++;
-			if (board[temp] != es) {
-				possible_moves[move_counter - 1].eaten_piece = board[temp];
-				break;
+			if (is_legal(m)) {
+				possible_moves[move_counter] = m;
+				move_counter++;
+				if (board[temp] != es) {
+					possible_moves[move_counter - 1].eaten_piece = board[temp];
+					break;
+				}
 			}
 		}
 	}

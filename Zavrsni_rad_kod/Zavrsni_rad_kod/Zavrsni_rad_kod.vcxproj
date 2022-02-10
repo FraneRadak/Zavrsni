@@ -19,9 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="calculate.cpp" />
     <ClCompile Include="checkers.cpp" />
     <ClCompile Include="chess_check.cpp" />
-    <ClCompile Include="constructors.cpp" />
+    <ClCompile Include="constructors_destructors.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="move.cpp" />
     <ClCompile Include="movements.cpp" />

@@ -9,6 +9,7 @@
 
 //#include "PositionStack.hpp"
 using namespace std;
+typedef unsigned long long int Long;
 enum{es,wP,wR,wB,wN,wQ,wK,bP,bR,bB,bN,bQ,bK};
 
 class Move {
@@ -75,14 +76,16 @@ private:
 	void castle_crusher(Move& m);
 	Move* move_generator(int& move_counter);
 	void print_possible_moves(const Move* moves, const int& move_counter);
-	bool is_under_check(const Move& m);
+	bool is_legal(const Move& m);
 	int search_for_piece(int piece,const Position&position);
-	bool diagonal_check(int king_index,const Position&p);
-	bool horizontal_vertical_check(int king_index, const Position& p);
-	bool knight_check(int king_index, const Position& p);
+	bool diagonal_check(int king_index);
+	bool horizontal_vertical_check(int king_index);
+	bool knight_check(int king_index);
 	bool is_attacked(int index);
+	bool pawn_check(int king_index);
 public:
 	Position();
+	Long perft(int depth);
 	void make_move(const Move& m);
 	void printPosition();
 	void move();

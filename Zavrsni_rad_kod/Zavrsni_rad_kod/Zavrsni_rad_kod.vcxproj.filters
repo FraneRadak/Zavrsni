@@ -33,9 +33,6 @@
     <ClCompile Include="print.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="constructors.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="checkers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -43,6 +40,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="other.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="constructors_destructors.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="calculate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

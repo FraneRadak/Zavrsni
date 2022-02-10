@@ -1,6 +1,6 @@
 #include "board.hpp"
 #include "PositionStack.hpp"
-bool Position::is_under_check(const Move& m) {
+bool Position::is_legal(const Move& m) {
 	Position pos = *this;
 	pos.make_move(m);
 	int king_index = 0;
@@ -11,10 +11,12 @@ bool Position::is_under_check(const Move& m) {
 	else if (m.piece > 6) {
 		king_index = search_for_piece(bK, pos);
 	}
-	if (this->diagonal_check(king_index, pos) || this->horizontal_vertical_check(king_index, pos) || this->knight_check(king_index, pos)) {
-		return true;
+	Position temp = stack->pop();
+	pos.turn = !pos.turn;
+	if (pos.diagonal_check(king_index) || pos.horizontal_vertical_check(king_index) || pos.knight_check(king_index) || pos.pawn_check(king_index)) {
+		return false;
 	}
-	return false;
+	return true;
 }
 bool Position::is_attacked(int index) {
 	int diagonal_delta[4]= { 13,-13,11,-11 };
@@ -43,6 +45,9 @@ bool Position::is_attacked(int index) {
 	for (int i = 0; i < 4; i++) {
 		int temp = index;
 		while (board[temp] >= 0) {
+			if (board[temp] < 0) {
+				break;
+			}
 			temp += horizontal_vertical_delta[i];
 			if (board[temp] < 0) {
 				break;
@@ -92,15 +97,15 @@ bool Position::is_attacked(int index) {
 	}
 	return false;
 }
-bool Position::diagonal_check(int index, const Position& position) {
+bool Position::diagonal_check(int index) {
 	int delta[4] = { 13,-13,11,-11 };
-	int temp = index;
 	for (int i = 0; i < 4; i++) {
-		temp += delta[i];
+		int temp = index;
 		while (board[temp] >= 0) {
+			temp += delta[i];
 			if (board[temp] != es) {
 				if (eat_own_piece(index, temp)) {
-					return false;
+					break;
 				}
 				else {
 					if ((board[temp] == bQ || board[temp] == bB) && board[index]==wK) {
@@ -115,15 +120,15 @@ bool Position::diagonal_check(int index, const Position& position) {
 	}
 	return false;
 }
-bool Position::horizontal_vertical_check(int index, const Position& p) {
+bool Position::horizontal_vertical_check(int index) {
 	int delta[4] = { 1,-1,12,-12 };
-	int temp = index;
 	for (int i = 0; i < 4; i++) {
-		temp += delta[i];
+		int temp = index;
 		while (temp >= 0) {
+			temp += delta[i];
 			if (board[temp] != es) {
 				if (eat_own_piece(index, temp)) {
-					return false;
+					break;
 				}
 				else {
 					if ((board[temp] == bQ || board[temp] == bR) && this->turn == white) {
@@ -138,7 +143,7 @@ bool Position::horizontal_vertical_check(int index, const Position& p) {
 	}
 	return false;
 }
-bool Position::knight_check(int index, const Position& p) {
+bool Position::knight_check(int index) {
 	int delta[8] = { 23,-23,14,-14,10,-10,25,-25 };
 	if (this->turn == white) {
 		for (int i = 0; i < 8; i++) {
@@ -155,5 +160,23 @@ bool Position::knight_check(int index, const Position& p) {
 			}
 		}
 		return false;
+	}
+}
+bool Position::pawn_check(int king_index) {
+	if (this->turn == black) {
+		if (board[king_index + 11] == wP || board[king_index + 13] == wP) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	else if (this->turn == white) {
+		if (board[king_index - 11] == bP || board[king_index - 13] == bP) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 }
