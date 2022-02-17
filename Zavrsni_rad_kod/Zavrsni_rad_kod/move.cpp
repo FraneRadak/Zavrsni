@@ -13,6 +13,4 @@ void Position::undo_move() {
 }
 void Position::move() {
 	int move_counter = 0;
-	Move* moves = move_generator(move_counter);
-	print_possible_moves(moves, move_counter);
 }

@@ -1,5 +1,7 @@
 #include <iostream>
 #include <cstdlib>
+#include <fstream>
+#include <string>
 
 #pragma once
 
@@ -23,7 +25,6 @@ public:
 };
 
 class Position {
-
 private:
 	bool turn=white;
 	bool check = false;
@@ -61,8 +62,6 @@ private:
 	bool white_big_castle = true;
 	bool black_small_castle = true;
 	bool black_big_castle = true;
-	//aktivna polja su od 26 do 117
-	//enum { es, wP, wR, wB, wN, wQ, wK, bP, bR, bB, bN, bQ, bK };
 	string piecelist[13] = { "es","wP","wR","wB","wN","wQ",
 	"wK","bP","bR","bB","bN","bQ","bK"};
 	void diagonal_movement(Move* possible_moves, int& move_counter, int i);
@@ -74,7 +73,7 @@ private:
 	void king_movement(Move* possible_moves, int& move_counter, int i);
 	bool eat_own_piece(int current_index, int move_index);
 	void castle_crusher(Move& m);
-	Move* move_generator(int& move_counter);
+	void move_generator(int& move_counter,Move* possible_moves);
 	void print_possible_moves(const Move* moves, const int& move_counter);
 	bool is_legal(const Move& m);
 	int search_for_piece(int piece,const Position&position);
@@ -83,9 +82,14 @@ private:
 	bool knight_check(int king_index);
 	bool is_attacked(int index);
 	bool pawn_check(int king_index);
+	//------------------------------------------------
+	void openNode(ofstream& file);
+	void closeNode(ofstream& file);
+	void writeContent(ofstream& file, int num_of_moves, Move* moves,Move lastMove);
+	string writeXmlMoves(Move* moves, int number);
 public:
 	Position();
-	Long perft(int depth);
+	Long perft(int depth,ofstream&file,Move lastMove);
 	void make_move(const Move& m);
 	void printPosition();
 	void move();

@@ -8,8 +8,6 @@ Move::Move(int piece, int current_position, int position) {
 	this->position = position;
 }
 Position::Position() {
-
 }
 Move::Move() {
-
 }

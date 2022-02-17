@@ -37,7 +37,7 @@ bool Position::promotion_check(Move* possible_moves, int& move_counter, int i) {
 	return false;
 }
 bool Position::eat_own_piece(int current_index, int move_index) {
-	if (((board[current_index] <= 6 && board[move_index] <= 6) || (board[current_index] >= 6 && board[move_index] >= 6)) && board[move_index] != es) {
+	if (((board[current_index] <= 6 && board[move_index] <= 6) || (board[current_index] > 6 && board[move_index] > 6)) && board[move_index] != es) {
 		return true;
 	}
 	return false;

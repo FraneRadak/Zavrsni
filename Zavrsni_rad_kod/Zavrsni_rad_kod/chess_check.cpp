@@ -1,6 +1,7 @@
 #include "board.hpp"
 #include "PositionStack.hpp"
 bool Position::is_legal(const Move& m) {
+	return true;
 	Position pos = *this;
 	pos.make_move(m);
 	int king_index = 0;
@@ -14,8 +15,9 @@ bool Position::is_legal(const Move& m) {
 	Position temp = stack->pop();
 	pos.turn = !pos.turn;
 	if (pos.diagonal_check(king_index) || pos.horizontal_vertical_check(king_index) || pos.knight_check(king_index) || pos.pawn_check(king_index)) {
-		return false;
+		return true;//
 	}
+
 	return true;
 }
 bool Position::is_attacked(int index) {

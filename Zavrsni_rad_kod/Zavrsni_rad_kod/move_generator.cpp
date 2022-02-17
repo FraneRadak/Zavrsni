@@ -1,8 +1,7 @@
 #include "board.hpp"
 #include "PositionStack.hpp"
 
-Move* Position::move_generator(int& move_counter) {
-	Move* possible_moves = new Move[255];
+void Position::move_generator(int& move_counter,Move*possible_moves) {
 	//int move_counter = 0;
 	if (this->turn == white) {
 		for (int i = 26; i <= 117; i++) {
@@ -60,5 +59,4 @@ Move* Position::move_generator(int& move_counter) {
 			}
 		}
 	}
-	return possible_moves;
 }

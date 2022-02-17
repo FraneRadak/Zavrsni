@@ -47,8 +47,8 @@ void Position::king_movement(Move* possible_moves, int& move_counter, int i) {
 				//treba dodati provjeru
 				m.eaten_piece = board[i + delta[j]];
 			}
-			//possible_moves[move_counter] = m;
-			//move_counter++;
+			possible_moves[move_counter] = m;
+			move_counter++;
 		}
 	}
 }
@@ -65,7 +65,7 @@ void Position::pawn_movement(Move* possible_moves, int& move_counter, int i) {
 		}
 		//pjesak s pocetnog polja moze ici 2 polja naprijed
 		if (i >= 98 && i <= 105) {
-			if (board[i - 24] == es) {
+			if (board[i - 24] == es && board[i-12]==es) {
 				Move m(board[i], i, i - 24);
 				if (is_legal(m)) {
 					possible_moves[move_counter] = m;
@@ -103,7 +103,7 @@ void Position::pawn_movement(Move* possible_moves, int& move_counter, int i) {
 		}
 		//pjesak s pocetnog polja moze ici 2 polja naprijed
 		if (i >= 38 && i <= 45) {
-			if (board[i + 24] == es) {
+			if (board[i + 24] == es && board[i+12]==es) {
 				Move m(board[i], i, i + 24);
 				if (is_legal(m)) {
 					possible_moves[move_counter] = m;
@@ -164,7 +164,7 @@ void Position::knight_movement(Move* possible_moves, int& move_counter, int i) {
 			Move m(board[i], i, i + delta[j]);
 			if (is_legal(m)) {
 				if (board[i + delta[j]] != es)
-					m.eaten_piece = board[i + 23];
+					m.eaten_piece = board[i + delta[j]];
 				possible_moves[move_counter] = m;
 				move_counter++;
 			}
