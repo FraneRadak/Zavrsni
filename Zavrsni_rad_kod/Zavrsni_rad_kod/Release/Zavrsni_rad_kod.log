@@ -1,7 +1,20 @@
-﻿  movements.cpp
+﻿  calculate.cpp
+  checkers.cpp
+  chess_check.cpp
+  constructors_destructors.cpp
+  main.cpp
+C:\FAKS\Git\Zavrsni\Zavrsni_rad_kod\Zavrsni_rad_kod\main.cpp(6,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  move.cpp
+  movements.cpp
+  move_generator.cpp
+  other.cpp
+  PositionStack.cpp
+  print.cpp
   Generating code
-  2 of 225 functions ( 0.9%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    3 functions had inline decision re-evaluated but remain unchanged
+  Previous IPDB was built with incompatible compiler, fall back to full compilation.
+C:\FAKS\Git\Zavrsni\Zavrsni_rad_kod\Zavrsni_rad_kod\other.cpp(19): warning C4715: 'Position::search_for_piece': not all control paths return a value
+C:\FAKS\Git\Zavrsni\Zavrsni_rad_kod\Zavrsni_rad_kod\chess_check.cpp(183): warning C4715: 'Position::pawn_check': not all control paths return a value
+C:\FAKS\Git\Zavrsni\Zavrsni_rad_kod\Zavrsni_rad_kod\chess_check.cpp(165): warning C4715: 'Position::knight_check': not all control paths return a value
+  All 224 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
   Zavrsni_rad_kod.vcxproj -> C:\FAKS\Git\Zavrsni\Zavrsni_rad_kod\Release\Zavrsni_rad_kod.exe

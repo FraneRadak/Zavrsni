@@ -2,7 +2,7 @@
 #include "PositionStack.hpp"
 void Position::king_movement(Move* possible_moves, int& move_counter, int i) {
 	int delta[10] = { 1,-1,12,-12,13,-13,11,-11,2,-2 };
-	for (int j = 0; j < 8; j++) {
+	for (int j = 0; j < 10; j++) {
 		//rohada
 		if (delta[j] == 2 || delta[j] == -2) {
 			//mala rohada
@@ -17,9 +17,20 @@ void Position::king_movement(Move* possible_moves, int& move_counter, int i) {
 					continue;
 				}
 				else {
-					Move m(board[i], i, i + 2);
-					possible_moves[move_counter] = m;
-					move_counter++;
+					if (board[i] == wK) {
+						if (!is_attacked(i + 1) && !is_attacked(i + 2) && board[i + 3] == wR) {
+							Move m(board[i], i, i + delta[j]);
+							possible_moves[move_counter] = m;
+							move_counter++;
+						}
+					}
+					else {
+						if (!is_attacked(i + 1) && !is_attacked(i + 2) && board[i + 3] == bR) {
+							Move m(board[i], i, i + delta[j]);
+							possible_moves[move_counter] = m;
+							move_counter++;
+						}
+					}
 				}
 			}
 			else {
@@ -33,22 +44,35 @@ void Position::king_movement(Move* possible_moves, int& move_counter, int i) {
 					continue;
 				}
 				else {
-					Move m(board[i], i, i - 2);
+					if (board[i] == wK) {
+						if (!is_attacked(i - 1) && !is_attacked(i - 2) && board[i - 4] == wR) {
+							Move m(board[i], i, i + delta[j]);
+							possible_moves[move_counter] = m;
+							move_counter++;
+						}
+					}
+					else {
+						if (!is_attacked(i - 1) && !is_attacked(i - 2) && board[i - 4] == bR) {
+							Move m(board[i], i, i + delta[j]);
+							possible_moves[move_counter] = m;
+							move_counter++;
+						}
+					}
+				}
+
+			}
+		}
+		else {
+			if (!eat_own_piece(i, i + delta[j]) && board[i + delta[j]] >= 0) {
+				Move m(board[i], i, i + delta[j]);
+				if (!is_attacked(i + delta[j])) {
+					if (board[i + delta[j]] != es) {
+						m.eaten_piece = board[i + delta[j]];
+					}
 					possible_moves[move_counter] = m;
 					move_counter++;
 				}
 			}
-		}
-		if (!eat_own_piece(i, i + delta[j]) && board[i + delta[j]] >= 0) {
-			Move m(board[i], i, i + delta[j]);
-			//treba dodati provjeru dali je polje tuceno od strane druge figure
-			//tj jeli figura koju kralj zeli pojesti branjena
-			if (board[i + delta[j]] != es) {
-				//treba dodati provjeru
-				m.eaten_piece = board[i + delta[j]];
-			}
-			possible_moves[move_counter] = m;
-			move_counter++;
 		}
 	}
 }
@@ -104,6 +128,7 @@ void Position::pawn_movement(Move* possible_moves, int& move_counter, int i) {
 		//pjesak s pocetnog polja moze ici 2 polja naprijed
 		if (i >= 38 && i <= 45) {
 			if (board[i + 24] == es && board[i+12]==es) {
+				set_enpassant(i);
 				Move m(board[i], i, i + 24);
 				if (is_legal(m)) {
 					possible_moves[move_counter] = m;
@@ -112,7 +137,7 @@ void Position::pawn_movement(Move* possible_moves, int& move_counter, int i) {
 			}
 		}
 		// u slucaju da jedemo figuru
-		if (board[i + 13] < 6 && board[i + 11] >0) {
+		if (board[i + 13] < 6 && board[i + 13] >0) {
 			Move m(board[i], i, i + 13);
 			if (is_legal(m)) {
 				m.eaten_piece = board[i + 13];
@@ -128,7 +153,40 @@ void Position::pawn_movement(Move* possible_moves, int& move_counter, int i) {
 				move_counter++;
 			}
 		}
-		//treba dodati opciju za en-passant uzimanje
+		//en-passant uzimanje
+		int enpassant_index = 0;
+		if (check_enpassant(i,enpassant_index)) {
+			if (board[i] == wP) {
+				if (enpassant_index == 1) {
+					Move m(board[i], i, i - 11);
+					m.eaten_piece = board[i + 1];
+					possible_moves[move_counter] = m;
+					move_counter++;
+				}
+				else if (enpassant_index == -1) {
+					Move m(board[i], i, i - 13);
+					m.eaten_piece = board[i - 1];
+					possible_moves[move_counter] = m;
+					move_counter++;
+				}
+			}
+			else {
+				if (enpassant_index == 1) {
+					Move m(board[i], i, i + 13);
+					m.eaten_piece = board[i + 1];
+					possible_moves[move_counter] = m;
+					move_counter++;
+				}
+				else if (enpassant_index == -1) {
+					Move m(board[i], i, i + 11);
+					m.eaten_piece = board[i - 1];
+					possible_moves[move_counter] = m;
+					move_counter++;
+				}
+
+			}
+			
+		}
 	}
 }
 

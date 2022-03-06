@@ -1,0 +1,18 @@
+﻿  PositionStack.cpp
+  calculate.cpp
+  checkers.cpp
+  chess_check.cpp
+  constructors_destructors.cpp
+  main.cpp
+C:\FAKS\Git\Zavrsni\Zavrsni_rad_kod\Zavrsni_rad_kod\main.cpp(6,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  move.cpp
+  move_generator.cpp
+  movements.cpp
+  other.cpp
+  print.cpp
+  Generating code
+  1 of 226 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    2 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Zavrsni_rad_kod.vcxproj -> C:\FAKS\Git\Zavrsni\Zavrsni_rad_kod\x64\Release\Zavrsni_rad_kod.exe

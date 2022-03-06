@@ -1,7 +1,6 @@
 #include "board.hpp"
 #include "PositionStack.hpp"
 bool Position::is_legal(const Move& m) {
-	return true;
 	Position pos = *this;
 	pos.make_move(m);
 	int king_index = 0;

@@ -3,7 +3,7 @@
 PositionStack* stack;
 
 PositionStack::PositionStack() {
-	p = new Position[300];
+	p = new Position[5000];
 	last_index = 0;
 	}
 	void PositionStack:: push(const Position& position) {
