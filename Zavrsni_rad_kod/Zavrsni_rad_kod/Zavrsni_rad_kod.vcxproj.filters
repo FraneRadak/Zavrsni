@@ -39,13 +39,16 @@
     <ClCompile Include="movements.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="other.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="constructors_destructors.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="calculate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="String.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="helpers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

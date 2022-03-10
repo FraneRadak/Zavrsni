@@ -26,8 +26,9 @@ public:
 
 class Position {
 private:
-	int white_enpassant_piece=0;
-	int black_enpassant_piece = 0;
+	int white_enpassant_filed=0;
+	int black_enpassant_field = 0;
+	bool enpassant_flag = false;
 	bool turn=white;
 	bool check = false;
 	bool check_mate = false;
@@ -91,6 +92,7 @@ private:
 	void closeNode(ofstream& file);
 	void writeContent(ofstream& file, int num_of_moves, Move* moves,Move lastMove,int pos_num);
 	string writeXmlMoves(Move* moves, int number);
+	string pieceToFENletter(int i);
 public:
 	Position();
 	Long perft(int depth,ofstream&file,Move lastMove,int pos_num);
@@ -98,6 +100,7 @@ public:
 	void printPosition();
 	void move();
 	void undo_move();
+	string toFEN();
 };
 /*
 //perft position 1 - start position

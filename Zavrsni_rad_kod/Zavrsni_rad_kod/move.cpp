@@ -2,9 +2,9 @@
 #include "PositionStack.hpp"
 
 void Position::make_move(const Move& m) {
+	stack->push(*this);
 	//rohada
 	if ((m.piece == wK || m.piece == bK) && abs(m.current_position - m.position) == 2) {
-		stack->push(*this);
 		//velika rohada
 		if (m.position - m.current_position == 2) {
 			board[m.position] = m.piece;
@@ -12,6 +12,7 @@ void Position::make_move(const Move& m) {
 			board[m.position - 1] = board[m.position + 1];
 			board[m.position + 1] = es;
 		}
+		//mala rohada
 		else {
 			board[m.position] = m.piece;
 			this->board[m.current_position] = es;
@@ -19,12 +20,20 @@ void Position::make_move(const Move& m) {
 			board[m.position - 2] = es;
 		}
 	}
-	else {
-		stack->push(*this);
+	//en passant uzimanje
+	if ((m.piece == wP || m.piece == bP) && enpassant_flag) {
 		this->board[m.position] = m.piece;
 		this->board[m.current_position] = es;
-		this->turn = !this->turn;
+		this->board[m.position - 12] = es;
 	}
+	else {
+		this->board[m.position] = m.piece;
+		this->board[m.current_position] = es;
+	}
+	enpassant_flag = false;
+	white_enpassant_filed = 0;
+	black_enpassant_field = 0;
+	this->turn = !this->turn;
 }
 
 void Position::undo_move() {

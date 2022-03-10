@@ -25,7 +25,7 @@ bool Position::is_attacked(int index) {
 		int temp = index;
 		while (board[temp] >= 0) {
 			temp += diagonal_delta[i];
-			if (board[temp] < 0) {
+			if (board[temp] < 0 || (this->turn==white && board[temp]<wK) || (this->turn==black && board[temp]>bP)) {
 				break;
 			}
 			if (this->turn == white && board[temp] <= 6) {
@@ -34,12 +34,13 @@ bool Position::is_attacked(int index) {
 			else if (this->turn == black && board[temp] > 6) {
 				break;
 			}
-			else if (this->turn == black && (board[temp] == wQ || board[temp] == wR)) {
+			else if (this->turn == white && (board[temp] == bB || board[temp] == bQ)) {
 				return true;
 			}
-			else if (this->turn = white && (board[temp] == bQ || board[temp] == bR)) {
+			else if (this->turn == black && (board[temp] == wB || board[temp] == wQ)) {
 				return true;
 			}
+
 		}
 	}
 	int horizontal_vertical_delta[4] = { 1,-1,12,-12 };

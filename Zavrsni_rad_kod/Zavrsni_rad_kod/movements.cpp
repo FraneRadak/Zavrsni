@@ -3,6 +3,9 @@
 void Position::king_movement(Move* possible_moves, int& move_counter, int i) {
 	int delta[10] = { 1,-1,12,-12,13,-13,11,-11,2,-2 };
 	for (int j = 0; j < 10; j++) {
+		if (board[i + delta[j]] < 0) {
+			continue;
+		}
 		//rohada
 		if (delta[j] == 2 || delta[j] == -2) {
 			//mala rohada
@@ -63,7 +66,7 @@ void Position::king_movement(Move* possible_moves, int& move_counter, int i) {
 			}
 		}
 		else {
-			if (!eat_own_piece(i, i + delta[j]) && board[i + delta[j]] >= 0) {
+			if (!(eat_own_piece(i, i + delta[j]) && board[i + delta[j]] >= 0)&& !is_attacked(i+delta[j])) {
 				Move m(board[i], i, i + delta[j]);
 				if (!is_attacked(i + delta[j])) {
 					if (board[i + delta[j]] != es) {
@@ -92,6 +95,7 @@ void Position::pawn_movement(Move* possible_moves, int& move_counter, int i) {
 			if (board[i - 24] == es && board[i-12]==es) {
 				Move m(board[i], i, i - 24);
 				if (is_legal(m)) {
+					white_enpassant_filed = i - 12;
 					possible_moves[move_counter] = m;
 					move_counter++;
 				}
@@ -114,7 +118,19 @@ void Position::pawn_movement(Move* possible_moves, int& move_counter, int i) {
 				move_counter++;
 			}
 		}
-		//treba dodati opciju za en-passant uzimanje
+		//en-passant
+		if (board[i + 1] == bP || board[i - 1] == bP) {
+			if (black_enpassant_field == i - 11) {
+				Move m(board[i], i, i - 11);
+				m.eaten_piece = bP;
+				this->enpassant_flag = true;
+			}
+			else if (black_enpassant_field == i - 13) {
+				Move m(board[i], i, i - 13);
+				m.eaten_piece = bP;
+				this->enpassant_flag = true;
+			}
+		}
 	}
 	if (board[i] == bP) {
 		//kretanje jedno polje naprijed
@@ -131,6 +147,7 @@ void Position::pawn_movement(Move* possible_moves, int& move_counter, int i) {
 				set_enpassant(i);
 				Move m(board[i], i, i + 24);
 				if (is_legal(m)) {
+					black_enpassant_field = i + 12;
 					possible_moves[move_counter] = m;
 					move_counter++;
 				}
@@ -153,40 +170,20 @@ void Position::pawn_movement(Move* possible_moves, int& move_counter, int i) {
 				move_counter++;
 			}
 		}
-		//en-passant uzimanje
-		int enpassant_index = 0;
-		if (check_enpassant(i,enpassant_index)) {
-			if (board[i] == wP) {
-				if (enpassant_index == 1) {
-					Move m(board[i], i, i - 11);
-					m.eaten_piece = board[i + 1];
-					possible_moves[move_counter] = m;
-					move_counter++;
-				}
-				else if (enpassant_index == -1) {
-					Move m(board[i], i, i - 13);
-					m.eaten_piece = board[i - 1];
-					possible_moves[move_counter] = m;
-					move_counter++;
-				}
+		//en passant
+		if (board[i + 1] == wP || board[i - 1] == wP) {
+			if (black_enpassant_field == i + 11) {
+				Move m(board[i], i, i + 11);
+				m.eaten_piece = wP;
+				this->enpassant_flag = true;
 			}
-			else {
-				if (enpassant_index == 1) {
-					Move m(board[i], i, i + 13);
-					m.eaten_piece = board[i + 1];
-					possible_moves[move_counter] = m;
-					move_counter++;
-				}
-				else if (enpassant_index == -1) {
-					Move m(board[i], i, i + 11);
-					m.eaten_piece = board[i - 1];
-					possible_moves[move_counter] = m;
-					move_counter++;
-				}
-
+			else if (black_enpassant_field == i + 13) {
+				Move m(board[i], i, i + 13);
+				m.eaten_piece = wP;
+				this->enpassant_flag = true;
 			}
-			
 		}
+
 	}
 }
 

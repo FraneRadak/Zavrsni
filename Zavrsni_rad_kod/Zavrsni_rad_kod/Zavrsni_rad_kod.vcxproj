@@ -23,13 +23,14 @@
     <ClCompile Include="checkers.cpp" />
     <ClCompile Include="chess_check.cpp" />
     <ClCompile Include="constructors_destructors.cpp" />
+    <ClCompile Include="helpers.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="move.cpp" />
     <ClCompile Include="movements.cpp" />
     <ClCompile Include="move_generator.cpp" />
-    <ClCompile Include="other.cpp" />
     <ClCompile Include="PositionStack.cpp" />
     <ClCompile Include="print.cpp" />
+    <ClCompile Include="String.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="board.hpp" />
