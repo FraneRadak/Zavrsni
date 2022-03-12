@@ -42,6 +42,7 @@ bool Position::eat_own_piece(int current_index, int move_index) {
 	}
 	return false;
 }
+/*
 void Position::set_enpassant(int index) {
 	if (board[index] == wP) {
 		white_enpassant_piece = board[index];
@@ -50,6 +51,8 @@ void Position::set_enpassant(int index) {
 		black_enpassant_piece = board[index];
 	}
 }
+*/
+/*
 bool Position::check_enpassant(int index,int& enpassant_index) {
 	if (board[index] == wP) {
 		if (board[index + 1] == bP && black_enpassant_piece == board[index + 1]) {
@@ -74,3 +77,4 @@ bool Position::check_enpassant(int index,int& enpassant_index) {
 		return false;
 	}
 }
+*/

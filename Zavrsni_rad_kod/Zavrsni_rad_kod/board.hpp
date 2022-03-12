@@ -13,6 +13,22 @@
 using namespace std;
 typedef unsigned long long int Long;
 enum{es,wP,wR,wB,wN,wQ,wK,bP,bR,bB,bN,bQ,bK};
+const string square_list[144] = {
+		"out","out","out","out","out","out","out","out","out","out","out","out",
+		"out","out","out","out","out","out","out","out","out","out","out","out",
+		"out","out","a8","b8","c8","d8","e8","f8","g8","h8","out","out",
+		"out","out","a7","b7","c7","d7","e7","f7","g7","h7","out","out",
+		"out","out","a6","b6","c6","d6","e6","f6","g6","h6","out","out",
+		"out","out","a5","b5","c5","d5","e5","f5","g5","h5","out","out",
+		"out","out","a4","b4","c4","d4","e4","f4","g4","h4","out","out",
+		"out","out","a3","b3","c3","d3","e3","f3","g3","h3","out","out",
+		"out","out","a2","b2","c2","d2","e2","f2","g2","h2","out","out",
+		"out","out","a1","b1","c1","d1","e1","f1","g1","h1","out","out",
+		"out","out","out","out","out","out","out","out","out","out","out","out",
+		"out","out","out","out","out","out","out","out","out","out","out","out"
+};
+const string piecelist[13] = { "es","wP","wR","wB","wN","wQ",
+	"wK","bP","bR","bB","bN","bQ","bK" };
 
 class Move {
 public:
@@ -22,6 +38,7 @@ public:
 	int current_position=0;
 	Move(int piece, int current_position, int position);
 	Move();
+	void setX(int x){}
 };
 
 class Position {
@@ -47,26 +64,10 @@ private:
 	nn,nn,nn,nn,nn,nn,nn,nn,nn,nn,nn,nn,
 	nn,nn,nn,nn,nn,nn,nn,nn,nn,nn,nn,nn
 	};
-	string square_list[144] = {
-		"out","out","out","out","out","out","out","out","out","out","out","out",
-		"out","out","out","out","out","out","out","out","out","out","out","out",
-		"out","out","a8","b8","c8","d8","e8","f8","g8","h8","out","out",
-		"out","out","a7","b7","c7","d7","e7","f7","g7","h7","out","out",
-		"out","out","a6","b6","c6","d6","e6","f6","g6","h6","out","out",
-		"out","out","a5","b5","c5","d5","e5","f5","g5","h5","out","out",
-		"out","out","a4","b4","c4","d4","e4","f4","g4","h4","out","out",
-		"out","out","a3","b3","c3","d3","e3","f3","g3","h3","out","out",
-		"out","out","a2","b2","c2","d2","e2","f2","g2","h2","out","out",
-		"out","out","a1","b1","c1","d1","e1","f1","g1","h1","out","out",
-		"out","out","out","out","out","out","out","out","out","out","out","out",
-		"out","out","out","out","out","out","out","out","out","out","out","out"
-	};
 	bool white_small_castle = true;
 	bool white_big_castle = true;
 	bool black_small_castle = true;
 	bool black_big_castle = true;
-	string piecelist[13] = { "es","wP","wR","wB","wN","wQ",
-	"wK","bP","bR","bB","bN","bQ","bK"};
 	void diagonal_movement(Move* possible_moves, int& move_counter, int i);
 	void forward_backward_movement(Move* possible_moves, int& move_counter, int i);
 	void horizontal_movement(Move* possible_moves, int& move_counter, int i);
@@ -85,8 +86,8 @@ private:
 	bool knight_check(int king_index);
 	bool is_attacked(int index);
 	bool pawn_check(int king_index);
-	void set_enpassant(int index);
-	bool check_enpassant(int index,int& enpassant_index);
+	//void set_enpassant(int index);
+	//bool check_enpassant(int index,int& enpassant_index);
 	//------------------------------------------------
 	void openNode(ofstream& file);
 	void closeNode(ofstream& file);

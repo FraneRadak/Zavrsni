@@ -17,6 +17,3 @@ PositionStack::PositionStack() {
 	PositionStack::~PositionStack() {
 		delete[] p;
 	}
-
-
-

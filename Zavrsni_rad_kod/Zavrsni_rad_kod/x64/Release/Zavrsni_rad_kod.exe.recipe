@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\FAKS\Git\Zavrsni\Zavrsni_rad_kod\x64\Release\Zavrsni_rad_kod.exe</FullPath>
+      <FullPath>C:\FAKS\Git\C++ chess engine\Zavrsni_rad_kod\x64\Release\Zavrsni_rad_kod.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

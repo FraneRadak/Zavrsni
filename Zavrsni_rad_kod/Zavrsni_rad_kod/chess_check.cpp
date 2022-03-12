@@ -20,7 +20,7 @@ bool Position::is_legal(const Move& m) {
 	return true;
 }
 bool Position::is_attacked(int index) {
-	int diagonal_delta[4]= { 13,-13,11,-11 };
+	const int diagonal_delta[4]= { 13,-13,11,-11 };
 	for (int i = 0; i < 4; i++) {
 		int temp = index;
 		while (board[temp] >= 0) {
@@ -43,7 +43,7 @@ bool Position::is_attacked(int index) {
 
 		}
 	}
-	int horizontal_vertical_delta[4] = { 1,-1,12,-12 };
+	const int horizontal_vertical_delta[4] = { 1,-1,12,-12 };
 	for (int i = 0; i < 4; i++) {
 		int temp = index;
 		while (board[temp] >= 0) {
@@ -68,7 +68,7 @@ bool Position::is_attacked(int index) {
 			}
 		}
 	}
-	int knight_delta[8] = { 23,-23,14,-14,10,-10,25,-25 };
+	const int knight_delta[8] = { 23,-23,14,-14,10,-10,25,-25 };
 	for (int i = 0; i < 8; i++) {
 		if (this->turn == white && board[index + knight_delta[i]] == bN) {
 			return true;
@@ -88,7 +88,7 @@ bool Position::is_attacked(int index) {
 			return true;
 		}
 	}
-	int king_delta[8] = { 1,-1,12,-12,13,-13,11,-11}; 
+	const int king_delta[8] = { 1,-1,12,-12,13,-13,11,-11}; 
 	for (int i = 0; i < 8; i++) {
 		if (this->turn == white && board[index + king_delta[i]] == bK) {
 			return true;
@@ -100,7 +100,7 @@ bool Position::is_attacked(int index) {
 	return false;
 }
 bool Position::diagonal_check(int index) {
-	int delta[4] = { 13,-13,11,-11 };
+	const int delta[4] = { 13,-13,11,-11 };
 	for (int i = 0; i < 4; i++) {
 		int temp = index;
 		while (board[temp] >= 0) {
@@ -123,7 +123,7 @@ bool Position::diagonal_check(int index) {
 	return false;
 }
 bool Position::horizontal_vertical_check(int index) {
-	int delta[4] = { 1,-1,12,-12 };
+	const int delta[4] = { 1,-1,12,-12 };
 	for (int i = 0; i < 4; i++) {
 		int temp = index;
 		while (temp >= 0) {
@@ -146,7 +146,7 @@ bool Position::horizontal_vertical_check(int index) {
 	return false;
 }
 bool Position::knight_check(int index) {
-	int delta[8] = { 23,-23,14,-14,10,-10,25,-25 };
+	const int delta[8] = { 23,-23,14,-14,10,-10,25,-25 };
 	if (this->turn == white) {
 		for (int i = 0; i < 8; i++) {
 			if (board[delta[i] + index] == bN) {

@@ -1,3 +1,3 @@
-﻿  helpers.cpp
-C:\FAKS\Git\Zavrsni\Zavrsni_rad_kod\Zavrsni_rad_kod\helpers.cpp(49): warning C4715: 'Position::search_for_piece': not all control paths return a value
+﻿  main.cpp
+C:\FAKS\Git\Zavrsni\Zavrsni_rad_kod\Zavrsni_rad_kod\main.cpp(6,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
   Zavrsni_rad_kod.vcxproj -> C:\FAKS\Git\Zavrsni\Zavrsni_rad_kod\x64\Debug\Zavrsni_rad_kod.exe
