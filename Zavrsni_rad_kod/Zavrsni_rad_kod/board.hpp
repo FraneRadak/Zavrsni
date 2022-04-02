@@ -13,22 +13,6 @@
 using namespace std;
 typedef unsigned long long int Long;
 enum{es,wP,wR,wB,wN,wQ,wK,bP,bR,bB,bN,bQ,bK};
-const string square_list[144] = {
-		"out","out","out","out","out","out","out","out","out","out","out","out",
-		"out","out","out","out","out","out","out","out","out","out","out","out",
-		"out","out","a8","b8","c8","d8","e8","f8","g8","h8","out","out",
-		"out","out","a7","b7","c7","d7","e7","f7","g7","h7","out","out",
-		"out","out","a6","b6","c6","d6","e6","f6","g6","h6","out","out",
-		"out","out","a5","b5","c5","d5","e5","f5","g5","h5","out","out",
-		"out","out","a4","b4","c4","d4","e4","f4","g4","h4","out","out",
-		"out","out","a3","b3","c3","d3","e3","f3","g3","h3","out","out",
-		"out","out","a2","b2","c2","d2","e2","f2","g2","h2","out","out",
-		"out","out","a1","b1","c1","d1","e1","f1","g1","h1","out","out",
-		"out","out","out","out","out","out","out","out","out","out","out","out",
-		"out","out","out","out","out","out","out","out","out","out","out","out"
-};
-const string piecelist[13] = { "es","wP","wR","wB","wN","wQ",
-	"wK","bP","bR","bB","bN","bQ","bK" };
 
 class Move {
 public:
@@ -36,14 +20,19 @@ public:
 	int position=0;
 	int eaten_piece = 0;
 	int current_position=0;
-	Move(int piece, int current_position, int position);
+	bool en_passant=false;
 	Move();
-	void setX(int x){}
+	Move(int piece, int current_position, int position);
+	void setPosition(int x);
+	void setCurrent_Position(int x);
+	void setPiece(int x);
+	void setEaten_Piece(int x = 0);
+	void setEnPassant();
 };
 
 class Position {
 private:
-	int white_enpassant_filed=0;
+	int white_enpassant_field=0;
 	int black_enpassant_field = 0;
 	bool enpassant_flag = false;
 	bool turn=white;
@@ -91,17 +80,19 @@ private:
 	//------------------------------------------------
 	void openNode(ofstream& file);
 	void closeNode(ofstream& file);
-	void writeContent(ofstream& file, int num_of_moves, Move* moves,Move lastMove,int pos_num);
+	void writeContent(ofstream& file, int num_of_moves, Move* moves,Move lastMove);
 	string writeXmlMoves(Move* moves, int number);
 	string pieceToFENletter(int i);
+	int FENLetterToPiece(char c);
 public:
 	Position();
-	Long perft(int depth,ofstream&file,Move lastMove,int pos_num);
+	Long perft(int depth,ofstream*file,Move&lastMove);
 	void make_move(const Move& m);
 	void printPosition();
 	void move();
 	void undo_move();
 	string toFEN();
+	void setFromFEN(string FEN);
 };
 /*
 //perft position 1 - start position

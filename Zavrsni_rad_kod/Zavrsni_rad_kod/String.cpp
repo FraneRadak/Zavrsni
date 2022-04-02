@@ -62,3 +62,26 @@ string Position::toFEN() {
 	FEN += "0";
 	return FEN;
 }
+void Position::setFromFEN(string FEN) {
+	int i=0;
+	int j=26;
+	while (FEN[i] != ' ') {
+		if (FEN[i] == '/') {
+			j += 4;
+		}
+		else if (isdigit(FEN[i])) {
+			int num = FEN[i] - '0';
+			int k = 0;
+			while (k < num) {
+				this->board[j] = es;
+				j++;
+				k++;
+			}
+		}
+		else {
+			this->board[j] = FENLetterToPiece(FEN[i]);
+			j++;
+		}
+		i++;
+	}
+}

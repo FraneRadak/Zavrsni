@@ -22,6 +22,7 @@
     <ClCompile Include="calculate.cpp" />
     <ClCompile Include="checkers.cpp" />
     <ClCompile Include="chess_check.cpp" />
+    <ClCompile Include="const.cpp" />
     <ClCompile Include="constructors_destructors.cpp" />
     <ClCompile Include="helpers.cpp" />
     <ClCompile Include="main.cpp" />
@@ -34,6 +35,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="board.hpp" />
+    <ClInclude Include="const.hpp" />
     <ClInclude Include="PositionStack.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

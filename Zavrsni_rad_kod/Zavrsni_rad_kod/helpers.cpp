@@ -47,3 +47,41 @@ int Position::search_for_piece(int piece, const Position& position) {
 		}
 	}
 }
+int Position::FENLetterToPiece(char c) {
+	if (c == 'P') {
+		return wP;
+	}
+	else if (c == 'p') {
+		return bP;
+	}
+	if (c == 'B') {
+		return wB;
+	}
+	if (c == 'b') {
+		return bB;
+	}
+	if (c == 'R') {
+		return wR;
+	}
+	if (c == 'r') {
+		return bR;
+	}
+	if (c == 'Q') {
+		return wQ;
+	}
+	if (c == 'q') {
+		return bQ;
+	}
+	if (c == 'N') {
+		return wN;
+	}
+	if (c == 'n') {
+		return bN;
+	}
+	if (c == 'k') {
+		return bK;
+	}
+	if (c == 'K') {
+		return wK;
+	}
+}

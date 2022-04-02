@@ -1,24 +1,33 @@
 #include "board.hpp"
 #include "PositionStack.hpp"
+#include "const.hpp"
 
-Long Position::perft(int depth,ofstream&file,Move lastMove,int pos_num) {
-    openNode(file);
+Long Position::perft(int depth,ofstream*file,Move&lastMove) {
+    if (DEBUG) {
+        openNode(*file);
+    }
     int move_counter = 0;
     Move moves[255];
     move_generator(move_counter,moves);
     int i;
     Long nodes = 0;
-    writeContent(file, move_counter, moves,lastMove,pos_num);
+    if (DEBUG) {
+        writeContent(*file, move_counter, moves, lastMove);
+    }
     if (depth == 0) {
-        closeNode(file);
+        if (DEBUG) {
+            closeNode(*file);
+        }
         return 1;
     }
     for (i = 0; i < move_counter; i++) {
         this->make_move(moves[i]);
-        nodes += perft(depth - 1,file,moves[i],pos_num+1);
+        nodes += perft(depth - 1,file,moves[i]);
         //cout << "num: " << nodes << endl;
         this->undo_move();
     }
-    closeNode(file);
+    if (DEBUG) {
+        closeNode(*file);
+    }
     return nodes;
 }

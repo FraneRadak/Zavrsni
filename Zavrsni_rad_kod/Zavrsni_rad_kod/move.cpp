@@ -21,17 +21,22 @@ void Position::make_move(const Move& m) {
 		}
 	}
 	//en passant uzimanje
-	if ((m.piece == wP || m.piece == bP) && enpassant_flag) {
+	if (m.en_passant){
 		this->board[m.position] = m.piece;
 		this->board[m.current_position] = es;
-		this->board[m.position - 12] = es;
+		if (m.piece == bP) {
+			this->board[m.position - 12] = es;
+		}
+		else {
+			this->board[m.position + 12] = es;
+		}
 	}
 	else {
 		this->board[m.position] = m.piece;
 		this->board[m.current_position] = es;
 	}
 	enpassant_flag = false;
-	white_enpassant_filed = 0;
+	white_enpassant_field = 0;
 	black_enpassant_field = 0;
 	this->turn = !this->turn;
 }
