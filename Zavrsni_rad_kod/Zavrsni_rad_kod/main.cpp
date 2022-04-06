@@ -5,7 +5,7 @@
 
 
 void main() {
-	DEBUG = true;
+	DEBUG = false;
 	stack = new PositionStack;
 	Position p;
 	int start;
@@ -28,12 +28,12 @@ void main() {
 	else {
 		start = clock();
 		Move m;
-		nodes = p.perft(3, NULL, m);
+		nodes = p.perft(2, NULL, m);
 		cout << "Num of nodes is " << nodes << endl;
 		stop = clock();
 	}
 	double time = ((double)(stop - start)) / CLOCKS_PER_SEC;
 	speed = nodes / time;
 	cout << "Time: " << time << endl;
-	cout << "Speed: " << speed << endl;
+	cout << "Speed: " << speed <<" npm"<< endl;
 }

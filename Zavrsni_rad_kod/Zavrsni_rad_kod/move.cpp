@@ -30,6 +30,7 @@ void Position::make_move(const Move& m) {
 		else {
 			this->board[m.position + 12] = es;
 		}
+		cout << "En-passant" << endl;
 	}
 	else {
 		this->board[m.position] = m.piece;

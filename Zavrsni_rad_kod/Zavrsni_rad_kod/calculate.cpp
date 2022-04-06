@@ -3,6 +3,7 @@
 #include "const.hpp"
 
 Long Position::perft(int depth,ofstream*file,Move&lastMove) {
+    pos_counter++;
     if (DEBUG) {
         openNode(*file);
     }

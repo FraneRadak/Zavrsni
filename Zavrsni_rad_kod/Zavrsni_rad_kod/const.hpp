@@ -5,6 +5,7 @@ using namespace std;
 
 #pragma once
 extern bool DEBUG;
+extern int pos_counter;
 
 const int diagonal_delta[4] = { 13,-13,11,-11 };
 const int horizontal_vertical_delta[4] = { 1,-1,12,-12 };

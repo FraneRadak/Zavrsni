@@ -1,4 +1,5 @@
 #include "board.hpp"
+#include "const.hpp"
 
 string Position::toFEN() {
 	string FEN = "";
@@ -55,7 +56,22 @@ string Position::toFEN() {
 		FEN += "q";
 	}
 	FEN += " ";
-	FEN += "-";
+	if (this->turn == white) {
+		if (black_enpassant_field != 0) {
+			FEN += square_list[black_enpassant_field];
+		}
+		else {
+			FEN += "-";
+		}
+	}
+	else if(this->turn == black) {
+		if (white_enpassant_field != 0) {
+			FEN += square_list[white_enpassant_field];
+		}
+		else {
+			FEN += "-";
+		}
+	}
 	FEN += " ";
 	FEN += "0";
 	FEN += " ";

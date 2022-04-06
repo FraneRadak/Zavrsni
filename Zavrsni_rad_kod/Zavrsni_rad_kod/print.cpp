@@ -10,6 +10,7 @@ void Position::closeNode(ofstream& file) {
 }
 void Position::writeContent(ofstream& file,int num_of_moves,Move*moves,Move lastMove){
 	file << "<FEN> " << this->toFEN() << " </FEN>" << endl;
+	file << "<pos_num> " << pos_counter << " </pos_num>" << endl;
 	file <<"<move_number> " << num_of_moves << " </move_number>" << endl;
 	file << "<played_move>" << piecelist[lastMove.piece] << "_" << square_list[lastMove.current_position] << "-" << square_list[lastMove.position] << "</played_move>" << endl;
 	file << "<moves>" << writeXmlMoves(moves, num_of_moves) << "</moves>" << endl;
