@@ -1,7 +1,7 @@
-﻿  main.cpp
-C:\FAKS\Git\C++ chess engine\Zavrsni_rad_kod\Zavrsni_rad_kod\main.cpp(7,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
+﻿  IOHandler.cpp
+C:\FAKS\Git\C++ chess engine\Zavrsni_rad_kod\Zavrsni_rad_kod\IOHandler.cpp(34,3): warning C4551: function call missing argument list
   Generating code
-  1 of 262 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
+  1 of 195 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code

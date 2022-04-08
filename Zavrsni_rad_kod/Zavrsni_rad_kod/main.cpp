@@ -2,12 +2,16 @@
 #include "board.hpp"
 #include "PositionStack.hpp"
 #include "const.hpp"
-
+#include "IO.hpp"
 
 void main() {
 	DEBUG = false;
 	stack = new PositionStack;
 	Position p;
+	run(p);
+	/*
+	p.setFromFEN("r3k2r/p1ppqpb1/bnN1pnp1/3P4/1p2P3/2N2Q1p/PPPBBPPP/R3K2R b KQkq - 1 1");
+	cout << p.toFEN() << endl;
 	int start;
 	int stop;
 	double speed;
@@ -21,7 +25,7 @@ void main() {
 		file << XmlFileHeader << endl;
 		start = clock();
 		Move m;
-		nodes = p.perft(3, &file, m);
+		nodes = p.perft(2, &file, m);
 		cout << "Num of nodes is " << nodes << endl;
 		stop = clock();
 	}
@@ -36,4 +40,5 @@ void main() {
 	speed = nodes / time;
 	cout << "Time: " << time << endl;
 	cout << "Speed: " << speed <<" npm"<< endl;
+	*/
 }

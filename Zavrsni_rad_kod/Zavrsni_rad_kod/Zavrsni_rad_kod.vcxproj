@@ -25,6 +25,7 @@
     <ClCompile Include="const.cpp" />
     <ClCompile Include="constructors_destructors.cpp" />
     <ClCompile Include="helpers.cpp" />
+    <ClCompile Include="IOHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="move.cpp" />
     <ClCompile Include="movements.cpp" />
@@ -36,6 +37,7 @@
   <ItemGroup>
     <ClInclude Include="board.hpp" />
     <ClInclude Include="const.hpp" />
+    <ClInclude Include="IO.hpp" />
     <ClInclude Include="PositionStack.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -32,3 +32,17 @@ Long Position::perft(int depth,ofstream*file,Move&lastMove) {
     }
     return nodes;
 }
+void Position::generate_positions(int depth) {
+    int move_counter = 0;
+    Move moves[255];
+    move_generator(move_counter, moves);
+    cout << this->toFEN() << endl;
+    if (depth == 0) {
+        return ;
+    }
+    for (int i = 0; i < move_counter; i++) {
+        this->make_move(moves[i]);
+        generate_positions(depth - 1);
+        this->undo_move();
+    }
+}

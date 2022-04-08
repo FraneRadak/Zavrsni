@@ -1,19 +1,2 @@
-﻿  PositionStack.cpp
-  String.cpp
-  calculate.cpp
-  checkers.cpp
-  chess_check.cpp
-  constructors_destructors.cpp
-  helpers.cpp
-  main.cpp
-C:\FAKS\Git\C++ chess engine\Zavrsni_rad_kod\Zavrsni_rad_kod\main.cpp(7,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
-  move.cpp
-  move_generator.cpp
-  movements.cpp
-  print.cpp
-  Generating Code...
-C:\FAKS\Git\C++ chess engine\Zavrsni_rad_kod\Zavrsni_rad_kod\helpers.cpp(49): warning C4715: 'Position::search_for_piece': not all control paths return a value
-C:\FAKS\Git\C++ chess engine\Zavrsni_rad_kod\Zavrsni_rad_kod\helpers.cpp(87): warning C4715: 'Position::FENLetterToPiece': not all control paths return a value
-C:\FAKS\Git\C++ chess engine\Zavrsni_rad_kod\Zavrsni_rad_kod\chess_check.cpp(177): warning C4715: 'Position::pawn_check': not all control paths return a value
-C:\FAKS\Git\C++ chess engine\Zavrsni_rad_kod\Zavrsni_rad_kod\chess_check.cpp(159): warning C4715: 'Position::knight_check': not all control paths return a value
+﻿  IOHandler.cpp
   Zavrsni_rad_kod.vcxproj -> C:\FAKS\Git\C++ chess engine\Zavrsni_rad_kod\x64\Debug\Zavrsni_rad_kod.exe

@@ -92,8 +92,10 @@ public:
 	void move();
 	void undo_move();
 	string toFEN();
+	void generate_positions(int depth);
 	void setFromFEN(string FEN);
 };
+
 /*
 //perft position 1 - start position
 int board[144] = {
