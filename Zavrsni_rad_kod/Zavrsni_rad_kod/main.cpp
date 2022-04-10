@@ -4,7 +4,7 @@
 #include "const.hpp"
 #include "IO.hpp"
 
-void main() {
+int main() {
 	DEBUG = false;
 	stack = new PositionStack;
 	Position p;
@@ -41,4 +41,5 @@ void main() {
 	cout << "Time: " << time << endl;
 	cout << "Speed: " << speed <<" npm"<< endl;
 	*/
+	return 0;
 }

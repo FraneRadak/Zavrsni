@@ -1,0 +1,1 @@
+g++ board.hpp calculate.cpp checkers.cpp chess_check.cpp const.cpp const.hpp constructors_destructors.cpp helpers.cpp IO.hpp IOHandler.cpp main.cpp move.cpp move_generator.cpp movements.cpp PositionStack.cpp PositionStack.hpp print.cpp String.cpp
